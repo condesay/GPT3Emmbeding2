@@ -3,14 +3,6 @@ import re
 import openai
 from openai.embeddings_utils import get_embedding, cosine_similarity
 
-# Fonction pour extraire le score de similarité de la réponse générée par GPT-3
-def extract_score(response):
-    match = re.search(r"\d+\.\d+", response)
-    if match:
-        return match.group()
-    else:
-        return "Pas de similarité trouvé."
-
 # Fonction pour récupérer la clé API OpenAI GPT-3 saisie par l'utilisateur
 def get_api_key():
     api_key = st.text_input("Entrez votre clé OpenAI:")
