@@ -40,7 +40,7 @@ def main():
         text1 = st.text_area("Texte 1")
         text2 = st.text_area("Texte 2")
         if st.button("Compare"):
-            similarity_score = get_similarity(text1, text2, model_id, api_key)
+            similarity_score = get_similarity(text1, text2, model_engine, api_key)
             st.write(f"Le score de similarité entre les deux textes est {similarity_score}.")
 
 if __name__ == "__main__":
