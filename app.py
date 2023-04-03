@@ -19,7 +19,10 @@ def get_api_key():
 # Fonction pour récupérer la similarité entre deux textes en utilisant l'API OpenAI GPT-3
 
 def get_similarity(text1, text2, model_engine, api_key):
+    openai.api_type = "azure"
     openai.api_key = api_key
+    openai.api_base = "https://tsi-openai.openai.azure.com"
+    openai.api_version = "2022-12-01"
     # Choose an embedding model
     model_id = "text-similarity-davinci-001"
     # Compute embeddings of the two texts
@@ -33,11 +36,10 @@ def main():
     st.title("Similarité entre textes")
     api_key = get_api_key()
     if api_key:
-        model_engine = "de-code-davinci-002"
         text1 = st.text_area("Texte 1")
         text2 = st.text_area("Texte 2")
         if st.button("Compare"):
-            similarity_score = get_similarity(text1, text2, model_engine, api_key)
+            similarity_score = get_similarity(text1, text2, model, api_key)
             st.write(f"Le score de similarité entre les deux textes est {similarity_score}.")
 
 if __name__ == "__main__":
