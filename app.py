@@ -24,7 +24,7 @@ def get_similarity(text1, text2, model_engine, api_key):
     openai.api_base = "https://tsi-openai.openai.azure.com"
     openai.api_version = "2022-12-01"
     # Choose an embedding model
-    model_id = model_engine
+    model_id = "text-similarity-davinci-001"
     # Compute embeddings of the two texts
     embeddings = openai.Embedding.create(inputs=[text1, text2], model=model_id)["data"]
     # Compute the cosine similarity between the embeddings
